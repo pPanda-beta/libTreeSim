@@ -15,22 +15,22 @@ typedef struct bintree
 
 void insertbst(tree **rtp,item z)
 {
- if(*rtp) 
- {
- 	if(z<(*rtp)->d)
- 		insertbst( &((*rtp)->l),z);
- 	else
- 		insertbst( &((*rtp)->r),z);
- 	
- }
- else
- {
- 	 *rtp=(tree *)malloc(sizeof(tree));
- 	 (*rtp)->d=z;
- 	 (*rtp)->l=(*rtp)->r=NULL;
- 	 
- }
- 
+	if(*rtp)
+	{
+		if(z<(*rtp)->d)
+			insertbst( &((*rtp)->l),z);
+		else
+			insertbst( &((*rtp)->r),z);
+
+	}
+	else
+	{
+		*rtp=(tree *)malloc(sizeof(tree));
+		(*rtp)->d=z;
+		(*rtp)->l=(*rtp)->r=NULL;
+
+	}
+
 }
 
 
@@ -38,15 +38,15 @@ void insertbstnonRec(tree **rtp,item z)
 {
 	while(*rtp)
 	{
-	 	if(z<(*rtp)->d)
-	 		rtp=&((*rtp)->l);
-	 	else
-	 		rtp=&((*rtp)->r);
+		if(z<(*rtp)->d)
+			rtp=&((*rtp)->l);
+		else
+			rtp=&((*rtp)->r);
 	}
-	
+
 	*rtp=(tree *)malloc(sizeof(tree));
- 	(*rtp)->d=z;
- 	(*rtp)->l=(*rtp)->r=NULL;
+	(*rtp)->d=z;
+	(*rtp)->l=(*rtp)->r=NULL;
 }
 
 
@@ -60,7 +60,7 @@ tree *search(tree *rt,item key)
 		else
 			rt=rt->r;
 	}
-	
+
 	return rt;
 }
 
@@ -68,26 +68,26 @@ tree *search(tree *rt,item key)
 
 tree *min(tree *rt)
 {
-  if(rt)
-	while(rt->l)
-		rt=rt->l;
-  return rt;
+	if(rt)
+		while(rt->l)
+			rt=rt->l;
+	return rt;
 }
 
 int depth(tree *rt)
 {
 	int hl,hr;
-	
+
 	if(rt)
 	{
 		hl=depth(rt->l);
 		hr=depth(rt->r);
-		
+
 		return 1+ (hl>hr? hl :hr) ;
-		
+
 	}
 	else return 0;
-	
+
 }
 
 
@@ -110,8 +110,8 @@ d 10
 
 delnode(tree **rtp,item z)
 {
-	if(!(rtp || *rtp)) return; 
-	
+	if(!(rtp || *rtp)) return;
+
 	tree *t;
 	if(z < (*rtp)->d)
 		delnode( &((*rtp)->l) , z);
@@ -119,24 +119,24 @@ delnode(tree **rtp,item z)
 		delnode( &((*rtp)->r) , z);
 	else
 	{
-		 if((*rtp)->l && (*rtp)->r)
-		 {
-		 	t=min((*rtp)->r);
-		 	
-		 	(*rtp)->d=t->d	;
-		 	delnode(&((*rtp)->r),t->d);
-		 }
-		 else
-		 {
-		 	t=*rtp;
-		 	if((*rtp)->l)
-		 			*rtp=(*rtp)->l;
-		 	else
-		 			*rtp=(*rtp)->r ;
-		 	
-		 	free(t);
-		 }
-	
+		if((*rtp)->l && (*rtp)->r)
+		{
+			t=min((*rtp)->r);
+
+			(*rtp)->d=t->d	;
+			delnode(&((*rtp)->r),t->d);
+		}
+		else
+		{
+			t=*rtp;
+			if((*rtp)->l)
+				*rtp=(*rtp)->l;
+			else
+				*rtp=(*rtp)->r ;
+
+			free(t);
+		}
+
 	}
 }
 
@@ -146,39 +146,39 @@ delnode(tree **rtp,item z)
 
 delnodenonRec(tree **rtp,item z)
 {
- tree *t;
- while(*rtp)
- {
-	while(z != (*rtp)->d)
+	tree *t;
+	while(*rtp)
 	{
-		if(z < (*rtp)->d)
-			rtp = &((*rtp)->l);
-		else
+		while(z != (*rtp)->d)
+		{
+			if(z < (*rtp)->d)
+				rtp = &((*rtp)->l);
+			else
+				rtp = &((*rtp)->r);
+		}
+
+		if((*rtp)->l && (*rtp)->r)
+		{
+			t=min((*rtp)->r);
+			(*rtp)->d=t->d	;
+
 			rtp = &((*rtp)->r);
+			z=t->d;
+		}
+		else
+		{
+			printf("Else part\n");
+			t=*rtp;
+			if((*rtp)->l)
+				*rtp=(*rtp)->l;
+			else
+				*rtp=(*rtp)->r ;
+
+			free(t);
+			return ;
+		}
 	}
 
-	if((*rtp)->l && (*rtp)->r)
-	{
-		t=min((*rtp)->r);
-		(*rtp)->d=t->d	;
-		
-		rtp = &((*rtp)->r);
-		z=t->d;
-	}
-	else
-	{
-		printf("Else part\n");
-		t=*rtp;
-		if((*rtp)->l)
-				*rtp=(*rtp)->l;
-		else
-	 			*rtp=(*rtp)->r ;
-	 	
-	 	free(t);
-	 	return ;
-	}
- }
- 
 }
 
 
@@ -195,10 +195,10 @@ delnodenonRec(tree **rtp,item z)
 preorder(tree *rt)
 {
 	if(!rt)	return;
- 	
- 	printf("%2d, ",rt->d);
- 	preorder(rt->l);
- 	preorder(rt->r);
+
+	printf("%2d, ",rt->d);
+	preorder(rt->l);
+	preorder(rt->r);
 }
 
 
@@ -207,10 +207,10 @@ preorder(tree *rt)
 inorder(tree *rt)
 {
 	if(!rt)	return;
- 
- 	inorder(rt->l);
- 	printf("%2d, ",rt->d);
- 	inorder(rt->r);
+
+	inorder(rt->l);
+	printf("%2d, ",rt->d);
+	inorder(rt->r);
 }
 
 
@@ -219,9 +219,9 @@ inorder(tree *rt)
 postorder(tree *rt)
 {
 	if(!rt)	return;
- 
+
 	postorder(rt->l);
- 	postorder(rt->r);
+	postorder(rt->r);
 	printf("%2d, ",rt->d);
 }
 

@@ -18,7 +18,7 @@ main()
 	tree *bst=0;
 
 	init(&bst);
-	
+
 	printf("\nEnter :-\n\
 1) I to insert\n\
 2) D to delete\n\
@@ -31,76 +31,76 @@ main()
 7) R to rotate right around root\n\
 8) B to balance root\n\
 ");
-	
-	
-	
+
+
+
 	while((ch=toupper(getch())) != 'Q')
 	{
-		
-		
-		
-		
+
+
+
+
 		switch(ch)
 		{
-			
+
 			case 'I' :
-						 printf("Enter a no.");
-						 scanf("%d",&x);
-						 insertavl(&bst,x);
-						 break;
-						 
+				printf("Enter a no.");
+				scanf("%d",&x);
+				insertavl(&bst,x);
+				break;
+
 			case 'D' :
-						 printf("Enter a no. to delete : ");
-						 scanf("%d",&x);
-						 delnodeavl(&bst,x);
-						 printf("Deleted\n");
-						 break;
-						 
-						 
-						 
+				printf("Enter a no. to delete : ");
+				scanf("%d",&x);
+				delnodeavl(&bst,x);
+				printf("Deleted\n");
+				break;
+
+
+
 			case 'P' :
-						 printf("The preorder traversal is :- ");
-						 preorder(bst);
-						 printf("\b\b \n");
-						 break;
-						 
+				printf("The preorder traversal is :- ");
+				preorder(bst);
+				printf("\b\b \n");
+				break;
+
 			case 'N' :
-						 printf("The inorder traversal is :- ");
-						 inorder(bst);
-						 printf("\b\b \n");
-						 break;
-						 
+				printf("The inorder traversal is :- ");
+				inorder(bst);
+				printf("\b\b \n");
+				break;
+
 			case 'O' :
-						 printf("The postorder traversal is :- ");
-						 postorder(bst);
-						 printf("\b\b \n");
-						 break;
-						 
-						 
-						 
+				printf("The postorder traversal is :- ");
+				postorder(bst);
+				printf("\b\b \n");
+				break;
+
+
+
 			case 'F' :
-						 printf("Enter a no.");
-						 scanf("%d",&x);
-						 printf("The element is %s found\n",search(bst,x)?"\b":"not");
-						 break;
-			
+				printf("Enter a no.");
+				scanf("%d",&x);
+				printf("The element is %s found\n",search(bst,x)?"\b":"not");
+				break;
+
 			case 'L' :
-						lrotate(&bst);	
-						break;
-			
+				lrotate(&bst);
+				break;
+
 			case 'R' :
-						rrotate(&bst);
-						break;
-			
+				rrotate(&bst);
+				break;
+
 			case 'B' :
-						bnode(&bst);
-						break;
-			
-			
+				bnode(&bst);
+				break;
+
+
 		}
-	
+
 		redraw();
 	}
-	
-	
+
+
 }
