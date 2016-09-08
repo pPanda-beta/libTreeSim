@@ -1,0 +1,35 @@
+# Project: 
+# Makefile created by Dev-C++ 5.3.0.4
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = ../DevCpp/binTreeSim.o ../DevCpp/PDOIL_ext.o ../DevCpp/expression_tree.o $(RES)
+LINKOBJ  = ../DevCpp/binTreeSim.o ../DevCpp/PDOIL_ext.o ../DevCpp/expression_tree.o $(RES)
+LIBS     = -L"G:/Program Files/Dev-Cpp/lib" -static-libgcc -lstdc++     -lglut32   -lglu32 -lopengl32 -lwinmm    -lgdi32   -lcomdlg32 -luuid -loleaut32 -lole32    -lgdi32                                                                  -lwsock32  -lcurl -lcurldll -lpthreadGC2  -ld3d9 -ld3dx9d -m32 -lwsock32    -lws2_32 -lsqlite3  libGLUT_FULL.a  -m32
+INCS     = -I"G:/Program Files/Dev-Cpp/include"
+CXXINCS  = -I"G:/Program Files/Dev-Cpp/include"
+BIN      = UseTreeSim.exe
+CXXFLAGS = $(CXXINCS)  -m32 -w
+CFLAGS   = $(INCS)  -m32 -w
+RM       = rm -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CC) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+../DevCpp/binTreeSim.o: ../libPrj/binTreeSim.c
+	$(CC) -c ../libPrj/binTreeSim.c -o ../DevCpp/binTreeSim.o $(CFLAGS)
+
+../DevCpp/PDOIL_ext.o: ../libPrj/PDOIL_ext.c
+	$(CC) -c ../libPrj/PDOIL_ext.c -o ../DevCpp/PDOIL_ext.o $(CFLAGS)
+
+../DevCpp/expression_tree.o: ../expression_tree.c
+	$(CC) -c ../expression_tree.c -o ../DevCpp/expression_tree.o $(CFLAGS)

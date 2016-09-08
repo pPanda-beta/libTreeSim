@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="default">
+				<Option output="../DevCpp/UseTreeSim" prefix_auto="1" extension_auto="1" />
+				<Option object_output="../DevCpp" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+			</Target>
+		</Build>
+		<Compiler>
+			<Add directory='&quot;&quot;' />
+		</Compiler>
+		<Linker>
+			<Add option="libGLUT_FULL.a" />
+		</Linker>
+		<Unit filename="../YourFile.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../binTreeSim.h">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../libPrj/PDOIL_ext.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../libPrj/binTreeSim.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
